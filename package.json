@@ -7,11 +7,15 @@
 		"test": "jest"
 	},
 	"dependencies": {
+		"firebase": "^4.2.0",
 		"react": "16.0.0-alpha.12",
 		"react-native": "0.46.4",
+		"react-native-message-bar": "^1.6.0",
+		"react-native-router-flux": "^4.0.0-beta.15",
 		"react-redux": "^5.0.5",
 		"redux": "^3.7.2",
-		"redux-promises": "^1.0.0"
+		"redux-promises": "^1.0.0",
+		"redux-thunk": "^2.2.0"
 	},
 	"devDependencies": {
 		"babel-jest": "20.0.3",

@@ -12,9 +12,9 @@ class Header extends Component {
     }
     return(
       <View style={headerStyle}>
-        <Text style={headerTextStyle}>
-          {headerText}
-        </Text>
+          <Text style={headerTextStyle}>
+            {headerText}
+          </Text>
       </View>
     );
   }
@@ -22,16 +22,18 @@ class Header extends Component {
 
 const style = {
   headerStyle: {
-    backgroundColor: '#c5e3ed',
+    backgroundColor: '#276F67',
     justifyContent: 'center',
     alignItems: 'center',
-    shadowColor: '#566c73',
-    shadowOffset: {height: 2, width: 0},
-    shadowOpacity: 0.2,
+    flexDirection: 'row',
+    shadowColor: 'black',
+    shadowOffset: {height: 1, width: 0},
+    shadowOpacity: 0.3,
     elevation: 2,
     position: 'relative',
     height: 45,
-    marginTop: '5%'
+    marginTop: '5%',
+    borderRadius: 1
   },
   headerTextStyle: {
     fontSize: 18,

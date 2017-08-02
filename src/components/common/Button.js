@@ -6,7 +6,7 @@ class Button extends Component {
     const {buttonStyle, buttonTextStyle} = stylesButton;
     return(
       <TouchableHighlight style={buttonStyle} onPress={this.props.onPress}>
-        <Text style={buttonTextStyle}>{this.props.btnTitle}</Text>
+          <Text style={buttonTextStyle}>{this.props.btnTitle}</Text>
       </TouchableHighlight>
     );
   }
@@ -14,15 +14,15 @@ class Button extends Component {
 
 const stylesButton = {
   buttonStyle: {
-    backgroundColor: '#c5e3ed',
+    backgroundColor: '#95a5a6',
     borderWidth: 0,
-    borderColor: '#c5e3ed',
+    borderColor: '#95a5a6',
     marginTop: 10,
     marginLeft: 3,
     marginRight: 3,
     alignSelf: 'stretch',
     flex: 1,
-    borderRadius: 5
+    borderRadius: 2
   },
   buttonTextStyle: {
     alignSelf: 'center',

@@ -5,7 +5,7 @@ class Card extends Component {
   render() {
     const {cardStyle} = stylesCard;
     return(
-      <View style={cardStyle}>
+      <View style={{...cardStyle, ...this.props.style}}>
         {this.props.children}
       </View>
     );
@@ -13,15 +13,15 @@ class Card extends Component {
 }
 const stylesCard = {
   cardStyle: {
-    borderWidth: 0.1,
-    borderColor: '#566c73',
+    borderWidth: 0,
+    borderColor: '#95a5a6',
     borderBottomWidth: 0,
     borderRadius: 5,
-    shadowColor: '#000',
+    shadowColor: '#95a5a6',
     shadowOffset: {height: 2, width: 0},
     shadowOpacity: 0.2,
     shadowRadius: 2,
-    marginTop: 200,
+    marginTop: 100,
     marginLeft: 5,
     marginRight: 5,
     elevation: 2,

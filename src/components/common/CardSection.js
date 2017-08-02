@@ -13,14 +13,12 @@ class CardSection extends Component {
 }
 const stylesCardSection = {
   CardSectionStyle: {
-    borderBottomWidth: 0.5,
+    borderBottomWidth: 0,
     justifyContent: 'flex-start',
-    flexDirection: 'column',
-    borderColor: '#566c73',
+    flexDirection: 'row',
+    borderColor: '#9DBAB7',
     elevation: 2,
-    position: 'relative',
-    padding: 5,
-    marginBottom: 1
+    position: 'relative'
   }
 }
 
