@@ -1,4 +1,4 @@
-import {Actions} from 'react-native-router-flux';
+import {Actions, ActionConst} from 'react-native-router-flux';
 import firebase from 'firebase';
 
 export const OnChangeUsername = 'OnChangeUsername';
@@ -66,5 +66,21 @@ export const createUser = (username, password) => {
       })
     })
 
+  }
+}
+
+export const OnEmployeeNameChange = 'OnEmployeeNameChange';
+export const onEmployeeNameChange = (name) => {
+  return {
+    type: OnEmployeeNameChange,
+    payload: name
+  }
+}
+
+export const OnEmployeeContactChange = 'OnEmployeeContactChange';
+export const onEmployeeContactChange = (contact) => {
+  return {
+    type: OnEmployeeContactChange,
+    payload: contact
   }
 }
