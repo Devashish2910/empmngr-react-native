@@ -20,6 +20,7 @@ const RouterComponent = () => {
       <Scene
           key="employeeList"
           component={EmployeeList}
+          type={ActionConst.REPLACE}
           title="Employees"
           rightTitle="Add"
           onRight={() => Actions.main({type: 'createEmployee'})}

@@ -27,18 +27,17 @@ class EmployeeList extends Component {
     MessageBarManager.unregisterMessageBar();
   }
 
+  _renderEmployeeList() {
+
+  }
+
   render() {
     const {
             background
           } = style;
       return(
         <View style={background}>
-         <View>
-           <MessageBarAlert ref="alert" />
-         </View>
-         <View>
-           
-         </View>
+           {this._renderEmployeeList()}
       </View>
     );
 

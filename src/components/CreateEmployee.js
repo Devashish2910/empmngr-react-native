@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {Text, View, Image, TextInput, Picker} from 'react-native';
 import {Card, CardSection, Button, Spinner, Header} from './common';
-import {employeeActions} from './../actions';
+import {employeeActions, createEmployee} from './../actions';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {MessageBar as MessageBarAlert, MessageBarManager} from 'react-native-message-bar';
@@ -22,6 +22,16 @@ class CreateEmployee extends Component {
     } else {
       MessageBarManager.hideAlert();
     }
+
+    if(nextProps.CreateEmployee.success) {
+      MessageBarManager.showAlert({
+        message: "Employee Created Successfully",
+        alertType: 'success',
+        animationType: 'SlideFromTop'
+      });
+    } else {
+      MessageBarManager.hideAlert();
+    }
   }
 
   componentDidMount() {
@@ -30,6 +40,7 @@ class CreateEmployee extends Component {
 
   componentWillMount() {
     this.props.CreateEmployee.user = null;
+    this.props.CreateEmployee.shift = 'Monday';
   }
 
   componentWillUnmount() {
@@ -48,6 +59,7 @@ class CreateEmployee extends Component {
 
   _submitBtnClick() {
     const {name, contact, shift} = this.props.CreateEmployee;
+    this.props.createEmployee({name, contact, shift})
   }
 
   render() {
@@ -82,7 +94,6 @@ class CreateEmployee extends Component {
                 <TextInput
                   autoCorrect={false}
                   placeholder='Contact'
-                  keyboardType='numeric'
                   value={this.props.CreateEmployee.contact}
                   onChangeText={contact => this.props.employeeActions({prop:'contact', value: contact})}
                   style={ContactTextInputStyle}
@@ -93,9 +104,13 @@ class CreateEmployee extends Component {
                   selectedValue={this.props.CreateEmployee.shift}
                   onValueChange={day => this.props.employeeActions({prop:'shift', value: day})}
                   >
-                  <Picker.Item label="Monday" value="monday" />
-                  <Picker.Item label="Tuesday" value="tuesday" />
-                  <Picker.Item label="Wednesday" value="wednesday" />
+                  <Picker.Item label="Monday" value="Monday" />
+                  <Picker.Item label="Tuesday" value="Tuesday" />
+                  <Picker.Item label="Wednesday" value="Wednesday" />
+                  <Picker.Item label="Thursday" value="Thudrsday" />
+                  <Picker.Item label="Friday" value="Friday" />
+                  <Picker.Item label="Saturday" value="Saturday" />
+                  <Picker.Item label="Sunday" value="Sunday" />
                 </Picker>
               </CardSection>
               <CardSection>
@@ -111,14 +126,14 @@ class CreateEmployee extends Component {
 }
 
 const mapStateToProps = state => {
-  
+
   return {
     CreateEmployee: state.EmployeeState
   }
 }
 
 const mapDispatchToProps = dispatch => {
-  return bindActionCreators({employeeActions}, dispatch);
+  return bindActionCreators({employeeActions, createEmployee}, dispatch);
 }
 
 const style = {
