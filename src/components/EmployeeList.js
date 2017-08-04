@@ -37,7 +37,12 @@ class EmployeeList extends Component {
           } = style;
       return(
         <View style={background}>
-           {this._renderEmployeeList()}
+          <View>
+            <MessageBarAlert ref="alert" />
+          </View>
+          <View>
+            
+          </View>
       </View>
     );
 
