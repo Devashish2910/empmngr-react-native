@@ -17,4 +17,12 @@ This is a simple react native application in which a user can manage the shifts 
 - A simulator will pop-up in some time in which you can run the app
 
 # Screenshots:
-![coming-soon](https://user-images.githubusercontent.com/24626766/28749699-17b20aec-7496-11e7-9e60-21d3c311b06c.png)
+- Create User:
+<p align="center">
+  <img src ="https://thumbs.gfycat.com/PlasticImpeccableEland-size_restricted.gif" width="200" height="400" />
+</p>
+
+- Login User:
+<p align="center">
+  <img src ="https://thumbs.gfycat.com/WigglyEnlightenedDeinonychus-size_restricted.gif" width="200" height="400" />
+</p>
