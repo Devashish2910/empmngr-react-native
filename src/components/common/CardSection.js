@@ -5,7 +5,7 @@ class CardSection extends Component {
   render() {
     const {CardSectionStyle} = stylesCardSection;
     return(
-      <View style={CardSectionStyle}>
+      <View style={{...CardSectionStyle, ...this.props.style}}>
         {this.props.children}
       </View>
     );

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import {Text, View, Image, TextInput} from 'react-native';
+import {Text, View, Image, TextInput, Picker} from 'react-native';
 import {Card, CardSection, Button, Spinner, Header} from './common';
-import {onEmployeeNameChange, onEmployeeContactChange} from './../actions';
+import {employeeActions} from './../actions';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {MessageBar as MessageBarAlert, MessageBarManager} from 'react-native-message-bar';
@@ -36,14 +36,6 @@ class CreateEmployee extends Component {
     MessageBarManager.unregisterMessageBar();
   }
 
-  _onNameChange(name) {
-    this.props.onEmployeeNameChange(name);
-  }
-
-  _onContactChange(contact) {
-    this.props.onEmployeeContactChange(contact);
-  }
-
   _renderButton() {
     if(this.props.CreateEmployee.isLoading) {
       return <Spinner size='large'/>
@@ -55,15 +47,16 @@ class CreateEmployee extends Component {
   }
 
   _submitBtnClick() {
-    const {name, contact} = this.props.CreateEmployee;
+    const {name, contact, shift} = this.props.CreateEmployee;
   }
-
 
   render() {
     const {
             background,
             NameTextInputStyle,
-            ContactTextInputStyle
+            ContactTextInputStyle,
+            shiftPickerStyle,
+            pickerTextStyle
           } = style;
       return(
         <View style={background}>
@@ -79,7 +72,7 @@ class CreateEmployee extends Component {
                     autoCorrect={false}
                     placeholder='Name'
                     value={this.props.CreateEmployee.name}
-                    onChangeText={name => this._onNameChange(name)}
+                    onChangeText={name => this.props.employeeActions({prop:'name', value: name})}
                     style= {NameTextInputStyle}
                     >
                   </TextInput>
@@ -89,10 +82,21 @@ class CreateEmployee extends Component {
                 <TextInput
                   autoCorrect={false}
                   placeholder='Contact'
+                  keyboardType='numeric'
                   value={this.props.CreateEmployee.contact}
-                  onChangeText={contact => this._onContactChange(contact)}
+                  onChangeText={contact => this.props.employeeActions({prop:'contact', value: contact})}
                   style={ContactTextInputStyle}
                   ></TextInput>
+              </CardSection>
+              <CardSection >
+                <Picker style={{flex: 1}}
+                  selectedValue={this.props.CreateEmployee.shift}
+                  onValueChange={day => this.props.employeeActions({prop:'shift', value: day})}
+                  >
+                  <Picker.Item label="Monday" value="monday" />
+                  <Picker.Item label="Tuesday" value="tuesday" />
+                  <Picker.Item label="Wednesday" value="wednesday" />
+                </Picker>
               </CardSection>
               <CardSection>
                 {this._renderButton()}
@@ -107,13 +111,14 @@ class CreateEmployee extends Component {
 }
 
 const mapStateToProps = state => {
+  
   return {
-    CreateEmployee: state.CreateEmployeeState
+    CreateEmployee: state.EmployeeState
   }
 }
 
 const mapDispatchToProps = dispatch => {
-  return bindActionCreators({onEmployeeNameChange, onEmployeeContactChange}, dispatch);
+  return bindActionCreators({employeeActions}, dispatch);
 }
 
 const style = {
@@ -136,6 +141,14 @@ const style = {
     borderBottomWidth: 1,
     borderBottomColor: '#ddd',
     color: '#c5e3ed'
+  },
+  shiftPickerStyle: {
+    marginTop: -45
+  },
+  pickerTextStyle: {
+    fontSize: 20,
+    paddingTop: 5,
+    color: '#c2b098',
   }
 }
 

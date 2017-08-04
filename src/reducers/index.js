@@ -1,8 +1,8 @@
 import {combineReducers} from 'redux';
 import AuthState from './reducer-auth';
-import CreateEmployeeState from './reducer-createEmployee';
+import EmployeeState from './reducer-employee';
 
 export default combineReducers({
   AuthState,
-  CreateEmployeeState
+  EmployeeState
 });
