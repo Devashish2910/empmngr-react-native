@@ -41,7 +41,7 @@ class EmployeeList extends Component {
             <MessageBarAlert ref="alert" />
           </View>
           <View>
-            
+
           </View>
       </View>
     );

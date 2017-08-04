@@ -69,6 +69,7 @@ class LoginForm extends Component {
     // This MessageBar will be accessible from the current (same) component, and from its child component
     // The MessageBar is then declared only once, in your main component.
     MessageBarManager.registerMessageBar(this.refs.alert);
+
   }
 
   componentWillMount() {

@@ -33,7 +33,7 @@ export const loginUser = (username, password) => {
         type: LoginUserSuccess,
         payload: user
       })
-      Actions.main({type: 'createEmployee'});
+      Actions.main();
     })
     .catch(() => {
       dispatch({
@@ -59,7 +59,7 @@ export const createUser = (username, password) => {
         type: CreateUserSuccess,
         payload: user
       })
-      Actions.auth({type: 'login'});
+      Actions.main();
     })
     .catch(() => {
       dispatch({
