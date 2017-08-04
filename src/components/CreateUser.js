@@ -30,6 +30,7 @@ class CreateUser extends Component {
         alertType: 'success',
         animationType: 'SlideFromTop'
       });
+      
     } else {
       MessageBarManager.hideAlert();
     }

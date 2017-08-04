@@ -30,7 +30,6 @@ class LoginForm extends Component {
         alertType: 'success',
         animationType: 'SlideFromTop'
       });
-      Actions.main();
     } else {
       MessageBarManager.hideAlert();
     }
