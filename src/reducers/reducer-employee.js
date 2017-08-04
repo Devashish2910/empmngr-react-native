@@ -1,4 +1,8 @@
-import {EmployeeActions, CreateEmployee, EmployeeCreatedSuccessfully, EmployeeCreateFail, EmployeeCreateStart} from './../actions';
+import {EmployeeActions,
+        CreateEmployee,
+        EmployeeCreatedSuccessfully,
+        EmployeeCreateFail,
+        EmployeeCreateStart} from './../actions';
 
 export default (state = {name: '', contact: '',  shift: 'Monday',user: null, error: '', isLoading: false, success: false}, action) => {
   switch (action.type) {

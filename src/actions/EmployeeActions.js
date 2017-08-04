@@ -33,5 +33,18 @@ export const createEmployee = ({name, contact, shift}) => {
        });
      })
   }
+}
 
+export const EmployeesFetchSuccess = 'EmployeesFetchSuccess';
+export const employeeFetch = () => {
+  const {uid} = firebase.auth().currentUser;
+  return (dispatch) => {
+    firebase.database().ref(`users/${uid}/employees`)
+     .on('value', snapshot => {
+       dispatch({
+         type: EmployeesFetchSuccess,
+         payload: snapshot.val()
+       });
+     })
+  }
 }

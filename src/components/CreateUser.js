@@ -24,16 +24,16 @@ class CreateUser extends Component {
       MessageBarManager.hideAlert();
     }
 
-    if(nextProps.Auth.user !== null) {
-      MessageBarManager.showAlert({
-        message: "User Created Successfully",
-        alertType: 'success',
-        animationType: 'SlideFromTop'
-      });
-      
-    } else {
-      MessageBarManager.hideAlert();
-    }
+    // if(nextProps.Auth.user !== null) {
+    //   MessageBarManager.showAlert({
+    //     message: "User Created Successfully",
+    //     alertType: 'success',
+    //     animationType: 'SlideFromTop'
+    //   });
+    //
+    // } else {
+    //   MessageBarManager.hideAlert();
+    // }
   }
 
   _onUsernameChange(username) {

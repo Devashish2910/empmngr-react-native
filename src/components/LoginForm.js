@@ -13,7 +13,6 @@ class LoginForm extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log(nextProps);
     if(nextProps.Auth.error) {
       MessageBarManager.showAlert({
         message: nextProps.Auth.error,
@@ -24,15 +23,6 @@ class LoginForm extends Component {
       MessageBarManager.hideAlert();
     }
 
-    if(nextProps.Auth.user !== null) {
-      MessageBarManager.showAlert({
-        message: "Login Successful",
-        alertType: 'success',
-        animationType: 'SlideFromTop'
-      });
-    } else {
-      MessageBarManager.hideAlert();
-    }
   }
 
   _onUsernameChange(username) {

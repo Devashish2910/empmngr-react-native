@@ -22,16 +22,6 @@ class CreateEmployee extends Component {
     } else {
       MessageBarManager.hideAlert();
     }
-
-    if(nextProps.CreateEmployee.success) {
-      MessageBarManager.showAlert({
-        message: "Employee Created Successfully",
-        alertType: 'success',
-        animationType: 'SlideFromTop'
-      });
-    } else {
-      MessageBarManager.hideAlert();
-    }
   }
 
   componentDidMount() {
