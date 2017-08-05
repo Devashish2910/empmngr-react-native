@@ -1,16 +1,38 @@
 import React, { Component } from 'react';
 import {Text, View, TextInput, Picker} from 'react-native';
 import {Card, CardSection, Button, Spinner, Header, Input} from './common';
-import {employeeActions} from './../actions';
+import {employeeActions, employeeEdit} from './../actions';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {Actions} from 'react-native-router-flux';
 import _ from 'lodash';
+import {MessageBar as MessageBarAlert, MessageBarManager} from 'react-native-message-bar';
 
 class EditEmployee extends Component {
   constructor(props) {
     super(props);
   }
+
+  componentWillReceiveProps(nextProps) {
+    if(nextProps.EditEmployee.error) {
+      MessageBarManager.showAlert({
+        message: nextProps.CreateEmployee.error,
+        alertType: 'error',
+        animationType: 'SlideFromTop'
+      });
+    } else {
+      MessageBarManager.hideAlert();
+    }
+  }
+
+  componentDidMount() {
+    MessageBarManager.registerMessageBar(this.refs.alert);
+  }
+
+  componentWillUnmount() {
+    MessageBarManager.unregisterMessageBar();
+  }
+
 
   componentWillMount() {
     _.each(this.props.employeeFromList, (value, prop) => {
@@ -50,6 +72,8 @@ class EditEmployee extends Component {
 
   _editBtnClick() {
     const {name, contact, shift} = this.props.EditEmployee;
+    const {uid} = this.props.employeeFromList;
+    this.props.employeeEdit({name, contact, shift, uid});
   }
 
   _messageBtnClick() {
@@ -69,6 +93,9 @@ class EditEmployee extends Component {
       return(
         <View style={background}>
          <View>
+           <View>
+             <MessageBarAlert ref="alert" />
+           </View>
            <View>
             <Card style={{marginTop: 30, marginLeft: 10, marginRight: 10, borderColor: '#9DBAB7', borderWidth: 1, borderBottomWidth: 1}}>
               <CardSection style={{borderBottomWidth: 1}}>
@@ -126,7 +153,7 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = dispatch => {
-  return bindActionCreators({employeeActions}, dispatch);
+  return bindActionCreators({employeeActions, employeeEdit}, dispatch);
 }
 
 const style = {

@@ -2,7 +2,10 @@ import {EmployeeActions,
         CreateEmployee,
         EmployeeCreatedSuccessfully,
         EmployeeCreateFail,
-        EmployeeCreateStart
+        EmployeeCreateStart,
+        EmployeeEditStart,
+        EmployeeEditFail,
+        EmployeeEditSuccess
       } from './../actions';
 const Init_State = {
   name: '',
@@ -25,7 +28,17 @@ export default (state = Init_State, action) => {
      return {error: 'Can not create employee', isLoading: false, success: false};
 
     case EmployeeCreateStart:
-     return {isLoading: true, error: '', success: false}
+     return {isLoading: true, error: '', success: false};
+
+    case EmployeeEditSuccess:
+      return {success: true, error: '', isLoading: false};
+
+    case EmployeeEditFail:
+      return {error: 'Can not update employee', isLoading: false, success: false};
+
+    case EmployeeEditStart:
+      return {isLoading: true, error: '', success: false};
+
 
     default:
      return state;

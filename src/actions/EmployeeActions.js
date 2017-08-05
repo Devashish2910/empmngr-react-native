@@ -48,3 +48,27 @@ export const employeeFetch = () => {
      })
   }
 }
+
+export const EmployeeEditStart = 'EmployeeEditStart';
+export const EmployeeEditSuccess = 'EmployeeEditSuccess';
+export const EmployeeEditFail = 'EmployeeEditFail';
+export const employeeEdit = ({name, contact, shift, uid}) => {
+  const {currentUser} = firebase.auth();
+  return (dispatch) => {
+    dispatch({
+      type: EmployeeEditStart
+    });
+
+    firebase.database().ref(`users/${currentUser.uid}/employees/${uid}`)
+     .set({name, contact, shift})
+     .then(() => {
+       dispatch({
+         type: EmployeeEditSuccess
+       })
+       Actions.main({type: 'reset'});
+     })
+     .catch(() => {
+       type: EmployeeEditFail
+     })
+  }
+}
