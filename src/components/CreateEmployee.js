@@ -7,6 +7,7 @@ import {bindActionCreators} from 'redux';
 import {MessageBar as MessageBarAlert, MessageBarManager} from 'react-native-message-bar';
 import {Actions} from 'react-native-router-flux';
 
+
 class CreateEmployee extends Component {
   constructor(props) {
     super(props);
@@ -31,6 +32,8 @@ class CreateEmployee extends Component {
   componentWillMount() {
     this.props.CreateEmployee.user = null;
     this.props.CreateEmployee.shift = 'Monday';
+    this.props.CreateEmployee.name = '';
+    this.props.CreateEmployee.contact = '';
   }
 
   componentWillUnmount() {
@@ -53,6 +56,7 @@ class CreateEmployee extends Component {
   }
 
   render() {
+    console.log(this.props.employeeFromList);
     const {
             background,
             NameTextInputStyle,
@@ -116,7 +120,6 @@ class CreateEmployee extends Component {
 }
 
 const mapStateToProps = state => {
-
   return {
     CreateEmployee: state.EmployeeState
   }

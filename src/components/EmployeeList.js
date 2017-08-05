@@ -54,11 +54,13 @@ class EmployeeList extends Component {
           <View>
             <MessageBarAlert ref="alert" />
           </View>
+          <View>
             <ListView
               enableEmptySections
               dataSource={this.dataSource}
               renderRow={this.renderRow}
             />
+          </View>
       </View>
     );
 

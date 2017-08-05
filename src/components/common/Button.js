@@ -5,7 +5,7 @@ class Button extends Component {
   render() {
     const {buttonStyle, buttonTextStyle} = stylesButton;
     return(
-      <TouchableHighlight style={buttonStyle} onPress={this.props.onPress}>
+      <TouchableHighlight style={{...buttonStyle, ...this.props.style}} onPress={this.props.onPress}>
           <Text style={buttonTextStyle}>{this.props.btnTitle}</Text>
       </TouchableHighlight>
     );
