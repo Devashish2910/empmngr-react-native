@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import {Text, View, TextInput, Picker} from 'react-native';
-import {Card, CardSection, Button, Spinner, Header, Input} from './common';
+import {Card, CardSection, Button, Spinner, Header, Input, Confirm} from './common';
 import {employeeActions, employeeEdit} from './../actions';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {Actions} from 'react-native-router-flux';
 import _ from 'lodash';
 import {MessageBar as MessageBarAlert, MessageBarManager} from 'react-native-message-bar';
+import Communication from 'react-native-communications';
 
 class EditEmployee extends Component {
   constructor(props) {
@@ -78,10 +79,13 @@ class EditEmployee extends Component {
 
   _messageBtnClick() {
     const {name, contact, shift} = this.props.EditEmployee;
+    const body = `Hey ${name}, You have shift on ${shift} in this week. -Devashish`;
+    Communication.text(contact, body);
   }
 
   _fireBtnClick() {
     const {name, contact, shift} = this.props.EditEmployee;
+
   }
 
   render() {
