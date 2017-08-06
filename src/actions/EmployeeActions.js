@@ -72,3 +72,27 @@ export const employeeEdit = ({name, contact, shift, uid}) => {
      })
   }
 }
+
+export const EmployeeDeleteStart = 'EmployeeDeleteStart';
+export const EmployeeDeleteSuccess = 'EmployeeDeleteSuccess';
+export const EmployeeDeleteFail = 'EmployeeDeleteFail';
+export const employeeDelete = (uid) => {
+  const {currentUser} = firebase.auth();
+  return dispatch => {
+    dispatch({
+      type: EmployeeDeleteStart
+    });
+
+    firebase.database().ref(`users/${currentUser.uid}/employees/${uid}`)
+     .remove()
+     .then(() => {
+       dispatch({
+         type: EmployeeDeleteSuccess
+       })
+       Actions.main({type: 'reset'});
+     })
+     .catch(() => {
+       type: EmployeeDeleteFail
+     });
+  }
+}

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {Text, View, TextInput, Picker} from 'react-native';
 import {Card, CardSection, Button, Spinner, Header, Input, Confirm} from './common';
 import Deva from './common';
-import {employeeActions, employeeEdit} from './../actions';
+import {employeeActions, employeeEdit, employeeDelete} from './../actions';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {Actions} from 'react-native-router-flux';
@@ -95,6 +95,21 @@ class EditEmployee extends Component {
     const {name, contact, shift} = this.props.EditEmployee;
   }
 
+  _onAccept() {
+    const {uid} = this.props.employeeFromList;
+    this.props.employeeDelete(uid);
+    this.setState({showModel: true});
+    MessageBarManager.showAlert({
+      message: "Employee Deleted",
+      alertType: 'success',
+      animationType: 'SlideFromTop'
+    });
+  }
+
+  _onDecline() {
+    this.setState({showModel: false});
+  }
+
   render() {
     const {
             background,
@@ -147,7 +162,7 @@ class EditEmployee extends Component {
               <CardSection>
                 {this._renderFireButton()}
               </CardSection>
-              <Confirm visible={this.state.showModel}>
+              <Confirm visible={this.state.showModel} onAccept={this._onAccept.bind(this)} onDecline={this._onDecline.bind(this)}>
                 Are you sure to fire this employee?
               </Confirm>
             </Card>
@@ -166,7 +181,7 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = dispatch => {
-  return bindActionCreators({employeeActions, employeeEdit}, dispatch);
+  return bindActionCreators({employeeActions, employeeEdit, employeeDelete}, dispatch);
 }
 
 const style = {
