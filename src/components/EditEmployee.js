@@ -86,8 +86,9 @@ class EditEmployee extends Component {
 
   _messageBtnClick() {
     const {name, contact, shift} = this.props.EditEmployee;
-    const body = `Hey ${name}, You have shift on ${shift} in this week. -Devashish`;
+    const body = `Hey ${name}, You have shift on ${shift} in this week. -User`;
     Communication.text(contact, body);
+
   }
 
   _fireBtnClick() {
