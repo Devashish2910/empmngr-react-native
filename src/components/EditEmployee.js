@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {Text, View, TextInput, Picker} from 'react-native';
 import {Card, CardSection, Button, Spinner, Header, Input, Confirm} from './common';
+import Deva from './common';
 import {employeeActions, employeeEdit} from './../actions';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
@@ -12,6 +13,10 @@ import Communication from 'react-native-communications';
 class EditEmployee extends Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      showModel: false
+    }
   }
 
   componentWillReceiveProps(nextProps) {
@@ -28,6 +33,7 @@ class EditEmployee extends Component {
 
   componentDidMount() {
     MessageBarManager.registerMessageBar(this.refs.alert);
+    console.log(Button);
   }
 
   componentWillUnmount() {
@@ -39,6 +45,7 @@ class EditEmployee extends Component {
     _.each(this.props.employeeFromList, (value, prop) => {
       this.props.employeeActions({prop, value});
     });
+
   }
 
   _renderEditButton() {
@@ -84,12 +91,11 @@ class EditEmployee extends Component {
   }
 
   _fireBtnClick() {
+    this.setState({showModel: true});
     const {name, contact, shift} = this.props.EditEmployee;
-
   }
 
   render() {
-    console.log(this.props.employeeFromList);
     const {
             background,
             pickerTextStyle
@@ -141,6 +147,9 @@ class EditEmployee extends Component {
               <CardSection>
                 {this._renderFireButton()}
               </CardSection>
+              <Confirm visible={this.state.showModel}>
+                Are you sure to fire this employee?
+              </Confirm>
             </Card>
           </View>
          </View>

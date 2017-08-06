@@ -33,4 +33,4 @@ const stylesButton = {
 
 }
 
-export {Button, stylesButton};
+export {Button};

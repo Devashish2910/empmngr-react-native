@@ -22,4 +22,4 @@ const stylesCardSection = {
   }
 }
 
-export {CardSection, stylesCardSection};
+export {CardSection};

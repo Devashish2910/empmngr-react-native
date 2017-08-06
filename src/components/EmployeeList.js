@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {Text, View, Image, TextInput, ListView} from 'react-native';
-import {Card, CardSection, Button, Spinner, Header} from './common';
+import {Card, CardSection, Button, Spinner, Header, Confirm} from './common';
 import {employeeFetch} from './../actions';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';

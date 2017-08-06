@@ -30,4 +30,4 @@ const stylesCard = {
   }
 }
 
-export {Card, stylesCard};
+export {Card};
